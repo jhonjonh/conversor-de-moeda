@@ -1,0 +1,9 @@
+.navbar {
+    background: linear-gradient(lightgrey, rgb(243, 240, 240));
+    box-shadow: 0px 2px 4px 1px grey;
+    margin-bottom: 4vh;
+  }
+  
+  .navbar-brand {
+    text-shadow: 0px 0px 2px rgb(153, 151, 151);
+  }
