@@ -8,50 +8,25 @@
     </div>
     <div class="card-body text-center">
         <form #conversaoForm="ngForm" class="form-inline">
-            <input type="text" name="valor" class="form-control text-right mr-3" placeholder="0" [(ngModel)]="conversao.valor" required>
-            <select name="moedaDe" [(ngModel)]="conversao.moedaDe" class="form-control" required>
+            <input type="text" name="valor" class="form-control text-right mr-3 mb-2" placeholder="0" [(ngModel)]="conversao.valor" numero required>
+            <select name="moedaDe" [(ngModel)]="conversao.moedaDe" class="form-control mb-2" required>
                 <option *ngFor="let moeda of moedas" [value]="moeda.sigla">
                     {{moeda.sigla}} - {{moeda.descricao}}
                 </option>
             </select>
-            <i class="bi bi-arrow-right mx-2"></i>
-            <select name="moedaPara" [(ngModel)]="conversao.moedaPara" class="form-control" required>
+            <i class="bi bi-arrow-right mx-2 mb-2"></i>
+            <select name="moedaPara" [(ngModel)]="conversao.moedaPara" class="form-control mb-2" required>
                 <option *ngFor="let moeda of moedas" [value]="moeda.sigla">
                     {{moeda.sigla}} - {{moeda.descricao}}
                 </option>
             </select>
-            <input type="submit" value="Converter" class="btn btn-success ml-3" data-toggle="modal" data-target="#modalCotacao" (click)="converter()" [disabled]="!conversaoForm.form.valid">
+            <input type="submit" value="Converter" class="btn btn-success ml-3 mb-2" data-toggle="modal" data-target="#modalCotacao" (click)="converter()" [disabled]="!conversaoForm.form.valid">
         </form>
     </div>
+    <modal-cotacao 
+        [id]="'modalCotacao'"
+        [conversaoResponse]="conversaoResponse"
+        [conversao]="conversao"
+        (onConfirm)="init()">
+    </modal-cotacao>
 </div>
-
-<!-- modal  -->
-<div class="modal fade"	tabindex="-1" id="modalCotacao" role="dialog" aria-labelledby="modalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="modalLabel">
-              Conteudo titulo
-          </h4>
-        </div>
-        <div class="modal-body text-center">
-          <div>
-              <h2>
-                  Titulo do texto
-              </h2>
-              <p>
-                  Texto
-              </p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button	type="button" class="btn btn-success"data-dismiss="modal">
-              Nova consulta
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
